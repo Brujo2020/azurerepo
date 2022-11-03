@@ -116,34 +116,25 @@
         var event3HourUpdated = event3Hour - offset ;
         var tiempoEvento3 = event3HourUpdated + ":" + event3Minutes
 
-
-        const isoStr = Tick.helper.date('2022-11-03T17:10:00')//new Date().toISOString();
-        console.log(isoStr); 
-        //document.write("<br>Date is: "+ isoStr.getHours());// 👉️ "2022-01-15T16:17:30.814Z"
-        var fechaEvento1 = Tick.helper.date('2022-11-03T17:25:00');
-        var fechaEvento2 = Tick.helper.date('2022-11-03T17:28:00');
-        var fechaEvento3 = Tick.helper.date('2022-11-03T17:30:00');
         setFirstEvent();
+     
 
-    //document.write("<br>Date is: "+ fechaEvento1);
         function setFirstEvent(){
             updateText("Primer evento")
-            //var counter = Tick.count.down(fecha + " " + tiempoEvento1 + ':00 ', {format:['h','m','s']});
-            var counter1 = Tick.count.down(fechaEvento1, {format:['h','m','s']});
-            counter1.onupdate = function(value) {
+            var counter = Tick.count.down(fecha + " " + tiempoEvento1 + ':00 ', {format:['h','m','s']});
+        counter.onupdate = function(value) {
             // value will contain amount of seconds left
             tick.value = value;
         };
-        counter1.onended = function() {
+        counter.onended = function() {
             // reached zero!
             setSecondEvent();
-            
         }
         }
 
         function setSecondEvent(){
             updateText("Segundo evento")
-            var counter2 = Tick.count.down(fechaEvento2, {format:['h','m','s']});
+    var counter2 = Tick.count.down(fecha + " " + tiempoEvento2 + ':00 ', {format:['h','m','s']});
     counter2.onupdate = function(value) {
     // value will contain amount of seconds left
         tick.value = value;
@@ -157,14 +148,13 @@
 
         function setThirdEvent(){
             updateText("Tercer Evento")
-            var counter3 = Tick.count.down(fechaEvento3, {format:['h','m','s']});
+        var counter3 = Tick.count.down(fecha + " " + tiempoEvento3 + ':00 ', {format:['h','m','s']});
         counter3.onupdate = function(value) {
         // value will contain amount of seconds left
             tick.value = value;
             };
             counter3.onended = function() {
             // reached zero!
-
             document.write("<br>Date is: "+ d.getYear()+"/"+ d.getMonth() + "/" + d.getDay() + " - " + d.getHours() + ":" + d.getMinutes() + ":"+ d.getSeconds()) ;
          }
         }
