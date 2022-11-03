@@ -1,37 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Cuenta Regresiva - Simply Coundown JS</title>
-	<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600,700,900&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="css/estilos.css">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width">
+    <title>Agenda</title>
+    
+    <link rel="stylesheet" href="./flip/flip.min.css">
+
 </head>
-<body>
-	
-	<div class="portada" id="portada">
-		<div class="header">
-			<h1 class="logotipo">Charla Principal</h1>
-			<p class="mensaje">Duración 15 min</p>
-		</div>
-		<div id="cuenta"></div>
-		<div class="redes-sociales">
-			<a href="https://www.facebook.com/falconamsters" class="btn-red-social"><i class="fab fa-facebook-f"></i></a>
-			<a href="https://www.twitter.com/falconamsters" class="btn-red-social"><i class="fab fa-twitter"></i></a>
-			<a href="https://www.twitter.com/falconamsters" class="btn-red-social"><i class="fab fa-instagram"></i></a>
-		</div>
-	</div>
+<body style="background-color: rgb(160, 176, 247);">
 
-	<main class="contenedor">
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus hic obcaecati fugit illo voluptatibus reiciendis tempora sequi, harum enim eaque fugiat est! Fugiat ipsam eaque qui facilis esse sed voluptatem?
-		Quibusdam quasi voluptatum non fuga. Sit assumenda qui culpa nam vitae maiores, at enim minus eos soluta numquam asperiores ratione iusto perspiciatis cumque? Tenetur dicta voluptates, doloremque ipsa itaque cupiditate!
-		Suscipit placeat, officia enim labore, mollitia corporis molestiae quam amet voluptates quaerat ipsum ut nostrum! Perferendis quidem sapiente, accusamus placeat voluptatem quae laboriosam animi earum nemo natus, culpa eum quam.
-		Recusandae illo aliquam, animi fugit cupiditate blanditiis numquam! Laboriosam quos ullam optio distinctio maiores dolorem pariatur quaerat nulla adipisci cum ratione provident, ducimus delectus quod illum dicta nisi iusto mollitia?
-		A iste eius necessitatibus porro eaque architecto eveniet culpa voluptatibus non! Eius deleniti amet, assumenda eveniet necessitatibus iste quasi facere laudantium dolores numquam commodi magnam ducimus dignissimos quis! Alias, fugit.</p>
-	</main>
+<!-- START OF FLIP EXAMPLE PRESET -->
 
-	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-	<script src="js/simplyCountdown.min.js"></script>
-	<script src="js/countdown.js"></script>
+<style>
+    .tick {
+        padding-bottom: 0em;
+        font-size:1rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    }
+    
+    .tick-label {
+        font-size:.475em;
+        text-align:center;
+    }
+
+    .tick-group {
+        margin:0 .25em;
+        text-align:center;
+    }
+
+    
+</style>
+
+<div style="text-align: center; font-family:tahoma; font-size: 4em ; margin-top: 10;" >
+<h1>
+<label id = "TextoEvento">
+</label>
+</h1>
+
+
+
+<div style="text-align: center;"></div>
+<div class="tick"
+     data-did-init="handleTickInit">
+
+    <div data-repeat="true"
+         data-layout="horizontal center fit"
+         data-transform="preset(h, m, s) -> delay">
+        
+        <div class="tick-group">
+
+            <div data-key="value"
+                 data-repeat="true"
+                 data-transform="pad(00) -> split -> delay">
+                <span data-view="flip"></span>
+            </div>
+            <span data-key="label"
+                  data-view="text"
+                  class="tick-label"></span>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+
+	function handleTickInit(tick) {
+
+        // Uncomment to set labels to different language ( in this case Dutch )
+        
+        var locale = {
+            YEAR_PLURAL: 'Años',
+            YEAR_SINGULAR: 'Año',
+            MONTH_PLURAL: 'Meses',
+            MONTH_SINGULAR: 'Mes',
+            WEEK_PLURAL: 'Semanas',
+            WEEK_SINGULAR: 'Semana',
+            DAY_PLURAL: 'Dias',
+            DAY_SINGULAR: 'Día',
+            HOUR_PLURAL: 'Horas',
+            HOUR_SINGULAR: 'Hora',
+            MINUTE_PLURAL: 'Minutos',
+            MINUTE_SINGULAR: 'Minuto',
+            SECOND_PLURAL: 'Segundos',
+            SECOND_SINGULAR: 'Segundo',
+            MILLISECOND_PLURAL: 'Millisegundos',
+            MILLISECOND_SINGULAR: 'Millisegundo'
+        };
+
+        for (var key in locale) {
+            if (!locale.hasOwnProperty(key)) { continue; }
+            tick.setConstant(key, locale[key]);
+        }
+        var d = Tick.helper.date();
+
+        var event1 = (new Date()) ;
+
+        var offset = 3
+        var fecha = "2022-11-03"
+        var event1Hour = 19 ;
+        var event1Minutes = "24"
+        var event1HourUpdated = event1Hour - offset ;
+        var tiempoEvento1 = event1HourUpdated + ":" + event1Minutes
+
+        var event2Hour = 19 ;
+        var event2Minutes = "25"
+        var event2HourUpdated = event2Hour - offset ;
+        var tiempoEvento2 = event2HourUpdated + ":" + event2Minutes
+
+        var event3Hour = 19 ;
+        var event3Minutes = "27"
+        var event3HourUpdated = event3Hour - offset ;
+        var tiempoEvento3 = event3HourUpdated + ":" + event3Minutes
+
+        setFirstEvent();
+     
+
+        function setFirstEvent(){
+            updateText("Primer evento")
+            var counter = Tick.count.down(fecha + " " + tiempoEvento1 + ':00 ', {format:['h','m','s']});
+        counter.onupdate = function(value) {
+            // value will contain amount of seconds left
+            tick.value = value;
+        };
+        counter.onended = function() {
+            // reached zero!
+            setSecondEvent();
+        }
+        }
+
+        function setSecondEvent(){
+            updateText("Segundo evento")
+    var counter2 = Tick.count.down(fecha + " " + tiempoEvento2 + ':00 ', {format:['h','m','s']});
+    counter2.onupdate = function(value) {
+    // value will contain amount of seconds left
+        tick.value = value;
+        };
+        counter2.onended = function() {
+        // reached zero!
+            setThirdEvent();
+        }
+
+        }
+
+        function setThirdEvent(){
+            updateText("Tercer Evento")
+        var counter3 = Tick.count.down(fecha + " " + tiempoEvento3 + ':00 ', {format:['h','m','s']});
+        counter3.onupdate = function(value) {
+        // value will contain amount of seconds left
+            tick.value = value;
+            };
+            counter3.onended = function() {
+            // reached zero!
+            document.write("<br>Date is: "+ d.getYear()+"/"+ d.getMonth() + "/" + d.getDay() + " - " + d.getHours() + ":" + d.getMinutes() + ":"+ d.getSeconds()) ;
+         }
+        }
+
+        function updateText(texto) {
+            var x = document.getElementById("TextoEvento");
+              
+                x.innerHTML = texto;
+            
+        }
+
+	}
+</script>
+
+<!-- END OF FLIP EXAMPLE PRESET -->
+
+<script src="./flip/flip.min.js"></script>
+
 </body>
 </html>
