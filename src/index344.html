@@ -100,7 +100,7 @@
         var event1 = (new Date()) ;
 
         var offset = 3
-        var fecha = "2022-11-04"
+        var fecha = "2022-11-03"
         var event1Hour = 19 ;
         var event1Minutes = "24"
         var event1HourUpdated = event1Hour - offset ;
@@ -116,34 +116,20 @@
         var event3HourUpdated = event3Hour - offset ;
         var tiempoEvento3 = event3HourUpdated + ":" + event3Minutes
 
-        //var compareDate = r.get('updatedate'); //servers date.
-        const serverTime = new Date().getUTCHours();
-        const localTime = new Date().getHours();
-        var diff = serverTime - localTime
-        var finalTime = serverTime - 3;
-        var event1Hour = finalTime + 1
-    //     console.log(localTime); 
-    //     var offset = localTime.getTimezoneOffset();
-    //     var serverOffset = compareDate.getTimezoneOffset() - offset;
-    //     var diff = diff + (new Date() + serverOffset*60000) - new Date(compareDate);
-    //    diff /= 60000;  
-    var fecha1 = '2022-11-04T' + event1Hour + ':25:00';
-   //document.write("<br>UTC is: "+ serverTime + " and time is " + localTime + " and difference " + diff + " and final time " + finalTime +  "fecha1" + fecha1);// 👉️ "2022-01-15T16:17:30.814Z"
-        // var fechaEvento1 = Tick.helper.date('2022-11-04T17:25:00');
-        // var fechaEvento2 = Tick.helper.date('2022-11-04T17:28:00');
-        // var fechaEvento3 = Tick.helper.date('2022-11-04T17:30:00');
 
-        var fecha1 = '2022-11-04T' + event1Hour + ':25:00';
-        var fechaEvento1 = Tick.helper.date('2022-11-04T09:25:00');
-        var fechaEvento2 = Tick.helper.date('2022-11-04T17:28:00');
-        var fechaEvento3 = Tick.helper.date('2022-11-04T17:30:00')
+        const isoStr = Tick.helper.date('2022-11-03T17:10:00')//new Date().toISOString();
+        console.log(isoStr); 
+        //document.write("<br>Date is: "+ isoStr.getHours());// 👉️ "2022-01-15T16:17:30.814Z"
+        var fechaEvento1 = Tick.helper.date('2022-11-03T17:25:00');
+        var fechaEvento2 = Tick.helper.date('2022-11-03T17:28:00');
+        var fechaEvento3 = Tick.helper.date('2022-11-03T17:30:00');
         setFirstEvent();
 
     //document.write("<br>Date is: "+ fechaEvento1);
         function setFirstEvent(){
             updateText("Primer evento")
-            var counter1 = Tick.count.down(fecha + " " + 6 + ":" + event1Minutes, {format:['h','m','s']});
-            //xvar counter1 = Tick.count.down(fechaEvento1, {format:['h','m','s']});
+            //var counter = Tick.count.down(fecha + " " + tiempoEvento1 + ':00 ', {format:['h','m','s']});
+            var counter1 = Tick.count.down(fechaEvento1, {format:['h','m','s']});
             counter1.onupdate = function(value) {
             // value will contain amount of seconds left
             tick.value = value;
