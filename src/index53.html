@@ -122,7 +122,6 @@
         var diff = serverTime - localTime
         var finalTime = serverTime - 3;
         var event1Hour = finalTime + 1
-        var testHour = serverTime - 2
     //     console.log(localTime); 
     //     var offset = localTime.getTimezoneOffset();
     //     var serverOffset = compareDate.getTimezoneOffset() - offset;
@@ -143,7 +142,7 @@
     //document.write("<br>Date is: "+ fechaEvento1);
         function setFirstEvent(){
             updateText("Primer evento")
-            var counter1 = Tick.count.down(fecha + " " + testHour + ":" + event1Minutes, {format:['h','m','s']});
+            var counter1 = Tick.count.down(fecha + " " + 6 + ":" + event1Minutes, {format:['h','m','s']});
             //xvar counter1 = Tick.count.down(fechaEvento1, {format:['h','m','s']});
             counter1.onupdate = function(value) {
             // value will contain amount of seconds left
