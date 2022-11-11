@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width">
-    <title>Agenda</title>
+    <title>Agenda Evento outSystems</title>
     
     <link rel="stylesheet" href="./flip/flip.min.css">
 
 </head>
-<body style="background-color: rgb(160, 176, 247);">
+<body style="background-color: rgb(78, 112, 165);">
 
 <!-- START OF FLIP EXAMPLE PRESET -->
 
@@ -34,10 +34,10 @@
     
 </style>
 
-<div style="text-align: center; font-family:tahoma; font-size: 4em ; margin-top: 10;" >
+<div style="text-align: center; font-family:tahoma; font-size: 1em ; margin-top: 10;" >
 <h1>
-<label id = "TextoEvento">
-</label>
+<label id = "TextoEvento"></label><br>
+<label id="textojose"></label>
 </h1>
 
 
@@ -99,20 +99,24 @@
 
         var event1 = (new Date()) ;
 
+        var mifecha = new Date().toLocaleString();
+        var jn = document.getElementById("textojose");
+        jn.innerHTML = mifecha;
+
         var offset = 3
-        var fecha = "2022-11-04"
-        var event1Hour = 19 ;
-        var event1Minutes = "24"
+        var fecha = "2022-11-09" 
+        var event1Hour = 16 ;
+        var event1Minutes = "30"
         var event1HourUpdated = event1Hour - offset ;
         var tiempoEvento1 = event1HourUpdated + ":" + event1Minutes
 
-        var event2Hour = 19 ;
-        var event2Minutes = "25"
+        var event2Hour = 17 ;
+        var event2Minutes = "00"
         var event2HourUpdated = event2Hour - offset ;
         var tiempoEvento2 = event2HourUpdated + ":" + event2Minutes
 
-        var event3Hour = 19 ;
-        var event3Minutes = "27"
+        var event3Hour = 18 ;
+        var event3Minutes = "30"
         var event3HourUpdated = event3Hour - offset ;
         var tiempoEvento3 = event3HourUpdated + ":" + event3Minutes
 
@@ -129,16 +133,16 @@
     //     var serverOffset = compareDate.getTimezoneOffset() - offset;
     //     var diff = diff + (new Date() + serverOffset*60000) - new Date(compareDate);
     //    diff /= 60000;  
-    var fecha1 = '2022-11-04T' + event1Hour + ':25:00';
+    var fecha1 = '2022-11-09T' + event1Hour + ':25:00';
    //document.write("<br>UTC is: "+ serverTime + " and time is " + localTime + " and difference " + diff + " and final time " + finalTime +  "fecha1" + fecha1);// 👉️ "2022-01-15T16:17:30.814Z"
         // var fechaEvento1 = Tick.helper.date('2022-11-04T17:25:00');
         // var fechaEvento2 = Tick.helper.date('2022-11-04T17:28:00');
         // var fechaEvento3 = Tick.helper.date('2022-11-04T17:30:00');
 
-        var fecha1 = '2022-11-04T' + event1Hour + ':25:00';
-        var fechaEvento1 = Tick.helper.date('2022-11-04T09:25:00');
-        var fechaEvento2 = Tick.helper.date('2022-11-04T17:28:00');
-        var fechaEvento3 = Tick.helper.date('2022-11-04T17:30:00')
+        var fecha1 = '2022-11-09T' + event1Hour + ':25:00';
+        var fechaEvento1 = Tick.helper.date('2022-11-09T16:00:00').getU;
+        var fechaEvento2 = Tick.helper.date('2022-11-09T17:28:00');
+        var fechaEvento3 = Tick.helper.date('2022-11-09T18:30:00')
         setFirstEvent();
 
     //document.write("<br>Date is: "+ fechaEvento1);
@@ -160,28 +164,26 @@
         function setSecondEvent(){
             updateText("Segundo evento")
             var counter2 = Tick.count.down(fechaEvento2, {format:['h','m','s']});
-    counter2.onupdate = function(value) {
-    // value will contain amount of seconds left
-        tick.value = value;
-        };
-        counter2.onended = function() {
-        // reached zero!
-            setThirdEvent();
-        }
-
+            counter2.onupdate = function(value) {
+            // value will contain amount of seconds left
+            tick.value = value;
+            };
+            counter2.onended = function() {
+            // reached zero!
+                setThirdEvent();
+            }
         }
 
         function setThirdEvent(){
             updateText("Tercer Evento")
             var counter3 = Tick.count.down(fechaEvento3, {format:['h','m','s']});
-        counter3.onupdate = function(value) {
-        // value will contain amount of seconds left
+            counter3.onupdate = function(value) {
+            // value will contain amount of seconds left
             tick.value = value;
             };
             counter3.onended = function() {
             // reached zero!
-
-            document.write("<br>Date is: "+ d.getYear()+"/"+ d.getMonth() + "/" + d.getDay() + " - " + d.getHours() + ":" + d.getMinutes() + ":"+ d.getSeconds()) ;
+            document.write("<br>La Fecha es: "+ d.getYear()+"/"+ d.getMonth() + "/" + d.getDay() + " - " + d.getHours() + ":" + d.getMinutes() + ":"+ d.getSeconds()) ;
          }
         }
 
@@ -197,7 +199,7 @@
 
 <!-- END OF FLIP EXAMPLE PRESET -->
 
-<script src="./flip/flip.min.js"></script>
 
+<script src="./flip/flip.min.js"></script>
 </body>
 </html>
