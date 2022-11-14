@@ -34,9 +34,15 @@
     
 </style>
 
-<div style="text-align: center; font-family:tahoma; font-size: 1em ; margin-top: 10;" >
+<div style="text-align: center; font-family:tahoma; 
+color: rgb(8, 38, 81); font-size: 0.8em ; margin-top: 8;" >
+<h2>
+<label id = "TextoEventoActual"></label><br>
+</h2>
 <h1>
-<label id = "TextoEvento">
+    <div style="text-align: center; font-family:tahoma; font-style: normal; color: rgb(21, 40, 117);font-size: 0.8em ; margin-top: 8;" ></div>
+<label id = "TextoEventoSiguiente"></label><br>
+Quedan:
 </label>
 </h1>
 
@@ -99,41 +105,42 @@
 
         var event1 = (new Date()) ;
 
-        var offset = 3
-        var fecha = "2022-11-11"
-        var event1Hour = 15 ;
-        var event1Minutes = "24"
+        var offset = 3 // Add 3 hours
+        var fecha = "2022-11-14"
+        var event1Hour = 21 ;
+        var event1Minutes = "30"
         var event1HourUpdated = event1Hour - offset ;
         var tiempoEvento1 = event1HourUpdated + ":" + event1Minutes
 
-        var event2Hour = 15 ;
-        var event2Minutes = "25"
+        var event2Hour = 22 ;
+        var event2Minutes = "00"
         var event2HourUpdated = event2Hour - offset ;
         var tiempoEvento2 = event2HourUpdated + ":" + event2Minutes
 
-        var event3Hour = 15 ;
-        var event3Minutes = "27"
+        var event3Hour = 22 ;
+        var event3Minutes = "45"
         var event3HourUpdated = event3Hour - offset ;
         var tiempoEvento3 = event3HourUpdated + ":" + event3Minutes
 
-        //var compareDate = r.get('updatedate'); //servers date.
+        var event4Hour = 22 ;
+        var event4Minutes = "00"
+
+        var event5Hour = 22 ;
+        var event5Minutes = "05"
+
+        var event6Hour = 09 ;
+        var event6Minutes = "55"
+
         const serverTime = new Date().getUTCHours();
         const localTime = new Date().getHours();
         const serverTimeMin = new Date().getUTCMinutes();
         var diff = serverTime - localTime
         var finalTime = serverTime - 3;
-        var event1Hour = finalTime + 1
+
         var testHour = serverTime - 2
-    //     console.log(localTime); 
-    //     var offset = localTime.getTimezoneOffset();
-    //     var serverOffset = compareDate.getTimezoneOffset() - offset;
-    //     var diff = diff + (new Date() + serverOffset*60000) - new Date(compareDate);
-    //    diff /= 60000;  
+
     var fecha1 = '2022-11-04T' + event1Hour + ':25:00';
-   //document.write("<br>UTC is: "+ serverTime + " and time is " + localTime + " and difference " + diff + " and final time " + finalTime +  "fecha1" + fecha1);// 👉️ "2022-01-15T16:17:30.814Z"
-        // var fechaEvento1 = Tick.helper.date('2022-11-04T17:25:00');
-        // var fechaEvento2 = Tick.helper.date('2022-11-04T17:28:00');
-        // var fechaEvento3 = Tick.helper.date('2022-11-04T17:30:00');
+
 
         var fecha1 = '2022-11-04T' + event1Hour + ':25:00';
         var fechaEvento1 = Tick.helper.date('2022-11-04T09:25:00').getU;
@@ -143,9 +150,8 @@
 
     //document.write("<br>Date is: "+ fechaEvento1);
         function setFirstEvent(){
-            updateText("Primer evento")
-            var counter1 = Tick.count.down(fecha + " " + testHour + ":" + event1Minutes, {format:['h','m','s']});
-            //xvar counter1 = Tick.count.down(fechaEvento1, {format:['h','m','s']});
+            updateText("Sesión en curso: Recepción de los invitados","Próxima sesión: Presentación del estudio sobre Low-Code")
+            var counter1 = Tick.count.down(fecha + " " + event1Hour + ":" + event1Minutes, {format:['h','m','s']});
             counter1.onupdate = function(value) {
             // value will contain amount of seconds left
             tick.value = value;
@@ -158,8 +164,8 @@
         }
 
         function setSecondEvent(){
-            updateText("Segundo evento")
-            var counter2 = Tick.count.down(fechaEvento2, {format:['h','m','s']});
+            updateText("Sesión en curso: Presentación del estudio sobre Low-Code" ,"Próxima sesión: Compartir de experiencias en salas privadas")
+            var counter2 = Tick.count.down(fecha + " " + event2Hour + ":" + event2Minutes, {format:['h','m','s']});
     counter2.onupdate = function(value) {
     // value will contain amount of seconds left
         tick.value = value;
@@ -172,8 +178,8 @@
         }
 
         function setThirdEvent(){
-            updateText("Tercer Evento")
-            var counter3 = Tick.count.down(fechaEvento3, {format:['h','m','s']});
+            updateText("Sesión en curso: Compartir de experiencias en salas privadas","Próxima sesión: Navegación en el Metaverso")
+            var counter3 = Tick.count.down(fecha + " " + event3Hour + ":" + event3Minutes, {format:['h','m','s']});
         counter3.onupdate = function(value) {
         // value will contain amount of seconds left
             tick.value = value;
@@ -181,14 +187,57 @@
             counter3.onended = function() {
             // reached zero!
 
+            setFourthEvent();
+         }
+        }
+
+        function setFourthEvent(){
+            updateText("Sesión en curso: Navegación en el Metaverso","Próxima sesión: Agradecimiento a los invitados")
+            var counter4 = Tick.count.down(fecha + " " + event4Hour + ":" + event4Minutes, {format:['h','m','s']});
+        counter4.onupdate = function(value) {
+        // value will contain amount of seconds left
+            tick.value = value;
+            };
+            counter4.onended = function() {
+            // reached zero!
+
+            setFifthEvent() ;
+         }
+        }
+
+        function setFifthEvent(){
+            updateText("Sesión en curso: Agradecimiento a los invitados","Próxima sesión: Reflecciones Estratégicas Finales")
+            var counter5 = Tick.count.down(fecha + " " + event5Hour + ":" + event5Minutes, {format:['h','m','s']});
+        counter5.onupdate = function(value) {
+        // value will contain amount of seconds left
+            tick.value = value;
+            };
+            counter5.onended = function() {
+            // reached zero!
+
+            setSixthEvent();
+         }
+        }
+
+        function setSixthEvent(){
+            updateText("Sesión en curso: Reflexiones Estratégicas Finales", "")
+            var counter6 = Tick.count.down(fecha + " " + event6Hour + ":" + event6Minutes, {format:['h','m','s']});
+        counter6.onupdate = function(value) {
+        // value will contain amount of seconds left
+            tick.value = value;
+            };
+            counter6.onended = function() {
+            // reached zero!
+
             document.write("<br>Date is: "+ d.getYear()+"/"+ d.getMonth() + "/" + d.getDay() + " - " + d.getHours() + ":" + d.getMinutes() + ":"+ d.getSeconds()) ;
          }
         }
 
-        function updateText(texto) {
-            var x = document.getElementById("TextoEvento");
-              
-                x.innerHTML = texto;
+        function updateText(texto1, texto2) {
+            var x = document.getElementById("TextoEventoActual");
+            var y = document.getElementById("TextoEventoSiguiente");
+                x.innerHTML = texto1;
+                y.innerHTML = texto2;
             
         }
 
